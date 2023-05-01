@@ -1,13 +1,19 @@
+:root {
+  --size-board: 300px;
+  --square-size: 100px
+}
+
 .square{
   background-color: aqua;
-  height: 100px;
-  width: 100px;
-  font-size: 80px;
+  height: var(--square-size);
+  width: var(--square-size);
+  font-size: var(--square-size);
+  text-align: center;
 }
 
 .gameboard{
-  width: 300pc;
-  height: 300px;
+  width: var(--size-board);
+  height: var(--size-board);
   display: grid;
-  grid-template-columns: repeat(3, 100px);
+  grid-template-columns: repeat(3, var(--square-size));
 }

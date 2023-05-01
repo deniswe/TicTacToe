@@ -10,7 +10,7 @@ export default function Game() {
   const [playing, setplaying] = useState(true)
 
   //Stops the game and sets the message
-  const checkwin = () => {
+  const checkwinold = () => {
     const winnning = [[0,1,2], [3,4,5], [6,7,8], [0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
     for (let i = 0; i < 8; i++){
       if (values[winnning[i][0]] === values[winnning[i][1]] && values[winnning[i][0]] === values[winnning[i][2]] && values[winnning[i][0]] !== ""){
@@ -24,6 +24,25 @@ export default function Game() {
       }
       if (values[0] !== "" && values[1] !== "" && values[2] !== "" && values[3] !== "" && values[4] !== "" && values[5] !== "" && values[6] !== "" && values[7] !== "" && values[8] !== ""){
         setplayerhaswon("It's a tie!")
+      }
+    }
+    
+  }
+
+  const checkwin = () => {
+    const winnning = [[0,1,2], [3,4,5], [6,7,8], [0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
+    if (values[0] !== "" && values[1] !== "" && values[2] !== "" && values[3] !== "" && values[4] !== "" && values[5] !== "" && values[6] !== "" && values[7] !== "" && values[8] !== ""){
+      setplayerhaswon("It's a tie!")
+    }
+    for (let i = 0; i < 8; i++){
+      if (values[winnning[i][0]] === values[winnning[i][1]] && values[winnning[i][0]] === values[winnning[i][2]] && values[winnning[i][0]] !== ""){
+        setplaying(false)
+        if (values[winnning[i][0]] === "X"){
+          setplayerhaswon("X Wins!")
+        }
+        else{
+          setplayerhaswon("O Wins!")
+        }
       }
     }
     
@@ -43,6 +62,12 @@ export default function Game() {
     window.location.reload(false);
   }
 
+  const changesize = (gamesize) => {
+    console.log(gamesize.currentTarget.value);
+    document.documentElement.style.setProperty("--size-board", gamesize.currentTarget.value + "px");
+    document.documentElement.style.setProperty("--square-size", gamesize.currentTarget.value/3 + "px");
+  }
+
   //Output
   return (
     <>
@@ -51,6 +76,7 @@ export default function Game() {
     </div>
     <button onClick={reset}>Restart</button>
     <p> {playerhaswon} </p>
+    <p> <input type = "range" min = "100" max = "1000" defaultValue={"300"} onChange={changesize}/> </p>
     </>
   );
 }
