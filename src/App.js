@@ -34,18 +34,18 @@ export default function Game() {
     if (values[0] !== "" && values[1] !== "" && values[2] !== "" && values[3] !== "" && values[4] !== "" && values[5] !== "" && values[6] !== "" && values[7] !== "" && values[8] !== ""){
       setplayerhaswon("It's a tie!")
     }
-    for (let i = 0; i < 8; i++){
-      if (values[winnning[i][0]] === values[winnning[i][1]] && values[winnning[i][0]] === values[winnning[i][2]] && values[winnning[i][0]] !== ""){
+    winnning.forEach((n) => {
+      console.log(n)
+      if (values[n[0]] === values[n[1]] && values[n[0]] === values[n[2]] && values[n[0]] !== ""){
         setplaying(false)
-        if (values[winnning[i][0]] === "X"){
+        if (values[n[0]] === "X"){
           setplayerhaswon("X Wins!")
         }
         else{
           setplayerhaswon("O Wins!")
         }
       }
-    }
-    
+    })
   }
 
   //runs checkwin everytime "values" is updated
@@ -63,7 +63,6 @@ export default function Game() {
   }
 
   const changesize = (gamesize) => {
-    console.log(gamesize.currentTarget.value);
     document.documentElement.style.setProperty("--size-board", gamesize.currentTarget.value + "px");
     document.documentElement.style.setProperty("--square-size", gamesize.currentTarget.value/3 + "px");
   }
