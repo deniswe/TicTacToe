@@ -35,7 +35,28 @@ export default function Game() {
       setplayerhaswon("It's a tie!")
     }
     winnning.forEach((n) => {
-      console.log(n)
+      const winstring = values[n[0]] + "" + values[n[1]] + values[n[2]]
+      if (winstring === "XXX" || winstring === "OOO"){
+        setplaying(false)
+        if (values[n[0]] === "X"){
+          setplayerhaswon("X Wins!")
+        }
+        else{
+          setplayerhaswon("O Wins!")
+        }
+      }
+    })
+  }
+
+  const checkwinbackup = () => {
+    const winnning = [[0,1,2], [3,4,5], [6,7,8], [0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
+    if (values[0] !== "" && values[1] !== "" && values[2] !== "" && values[3] !== "" && values[4] !== "" && values[5] !== "" && values[6] !== "" && values[7] !== "" && values[8] !== ""){
+      setplayerhaswon("It's a tie!")
+    }
+    winnning.forEach((n) => {
+      const winstring = values[n[0]] + values[n[2]] + values[n[2]]
+      console.log(winstring)
+      console.log("1")
       if (values[n[0]] === values[n[1]] && values[n[0]] === values[n[2]] && values[n[0]] !== ""){
         setplaying(false)
         if (values[n[0]] === "X"){
