@@ -1,6 +1,7 @@
 :root {
   --size-board: 300px;
-  --square-size: 100px
+  --square-size: 100px;
+  --square-amount: 3;
 }
 
 .square{
@@ -15,5 +16,5 @@
   width: var(--size-board);
   height: var(--size-board);
   display: grid;
-  grid-template-columns: repeat(3, var(--square-size));
+  grid-template-columns: repeat(var(--square-amount), var(--square-size));
 }
