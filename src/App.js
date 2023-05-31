@@ -141,6 +141,9 @@ export default function Game() {
     if (fieldsize > 3){
     setfieldsize(fieldsize-1)
     setvalues(Array(fieldsize*fieldsize).fill(""))
+    setplayer1turn(true)
+    setplayerhaswon("Ongoing Game")
+    setplaying(true)
     setresetvalue(true)
     }
   }
@@ -148,6 +151,9 @@ export default function Game() {
   const makebigger = () => {
     setfieldsize(fieldsize+1)
     setvalues(Array(fieldsize*fieldsize).fill(""))
+    setplayer1turn(true)
+    setplayerhaswon("Ongoing Game")
+    setplaying(true)
     setresetvalue(true)
   }
 
@@ -166,7 +172,6 @@ export default function Game() {
     setplayerhaswon("Ongoing Game")
     setplaying(true)
     setresetvalue(true)
-    makegame() //deletes the old game
   }
 
   //Output
