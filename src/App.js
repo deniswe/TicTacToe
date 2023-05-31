@@ -140,7 +140,7 @@ export default function Game() {
   const makesmaller = () => {
     if (fieldsize > 3){
     setfieldsize(fieldsize-1)
-    setvalues(Array(fieldsize*fieldsize).fill(""))
+    setvalues(Array((fieldsize-1)*(fieldsize-1)).fill(""))
     setplayer1turn(true)
     setplayerhaswon("Ongoing Game")
     setplaying(true)
@@ -150,7 +150,7 @@ export default function Game() {
 
   const makebigger = () => {
     setfieldsize(fieldsize+1)
-    setvalues(Array(fieldsize*fieldsize).fill(""))
+    setvalues(Array((fieldsize+1)*(fieldsize+1)).fill(""))
     setplayer1turn(true)
     setplayerhaswon("Ongoing Game")
     setplaying(true)
